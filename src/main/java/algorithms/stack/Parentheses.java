@@ -5,7 +5,7 @@ package algorithms.stack;
  *  braces, and square brackets are balanced.
 */
 
-import java.util.Stack;
+import java.util.*;
 
 public class Parentheses {
     public static boolean isBalanced(String expression) {
