@@ -32,7 +32,10 @@ public class TreeTest {
 		tree.insert(105);
 		tree.insert(58);
 		tree.insert(32);
-	
+
+//		tree.print();
+//		tree.visit(tree.root);
+		tree.preorder();
 		//checking
 //		System.out.println("Is tree correct = "+ tree.isBST());
 //		tree.print();
@@ -50,10 +53,10 @@ public class TreeTest {
 //		tree.print();
 		
 		
-		BST copy = tree.copy();
-		tree.print();
-		System.out.println();
-		copy.print();
+//		BST copy = tree.copy();
+//		tree.print();
+//		System.out.println();
+//		copy.print();
 //		if(BST.verify(tree, copy)){
 //			System.out.println("Both the trees are identical");
 //		}
