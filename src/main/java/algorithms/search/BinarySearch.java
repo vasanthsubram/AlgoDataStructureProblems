@@ -1,6 +1,5 @@
 package algorithms.search;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
 public class BinarySearch {
@@ -17,15 +16,15 @@ public class BinarySearch {
         assertTrue(search(input, 600) == 5);
         assertTrue(search(input, 5500) == -1);
         
-        assertTrue(search_R(input, 100,0,input.length-1) == 0);
-        assertTrue(search_R(input, 200,0,input.length-1) == 1);
-        assertTrue(search_R(input, 300,0,input.length-1) == 2);
+        assertTrue(search_recursive(input, 100,0,input.length-1) == 0);
+        assertTrue(search_recursive(input, 200,0,input.length-1) == 1);
+        assertTrue(search_recursive(input, 300,0,input.length-1) == 2);
         
-        assertTrue(search_R(input, 400,0,input.length-1) == 3);
-        assertTrue(search_R(input, 500,0,input.length-1) == 4);
-        assertTrue(search_R(input, 600,0,input.length-1) == 5);
+        assertTrue(search_recursive(input, 400,0,input.length-1) == 3);
+        assertTrue(search_recursive(input, 500,0,input.length-1) == 4);
+        assertTrue(search_recursive(input, 600,0,input.length-1) == 5);
         
-        assertTrue(search_R(input, 34500,0,input.length-1) == -1);
+        assertTrue(search_recursive(input, 34500,0,input.length-1) == -1);
         
     }
 
@@ -58,7 +57,7 @@ public class BinarySearch {
         return result;
     }
     
-    public static int search_R(int[] input, int target, int min, int max){
+    public static int search_recursive(int[] input, int target, int min, int max){
     	if(min > max){
     		return -1;
     	}
@@ -76,6 +75,6 @@ public class BinarySearch {
              max = mid - 1;
          }
          
-         return search_R(input, target, min, max);
+         return search_recursive(input, target, min, max);
     }
 }
