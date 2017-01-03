@@ -1,4 +1,4 @@
-package algorithms.general;
+package algorithms.dynamic;
 
 public class Fibonacci {
 
@@ -9,7 +9,7 @@ public class Fibonacci {
 		System.out.println(x1);
 		System.out.println(x2);
 
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 1000; i++) {
 			x2 = x1 + x2;
 			x1 = x2 - x1;
 			System.out.println(x2);

@@ -11,10 +11,10 @@ public class BinarySearchRecursive {
 
         int[] input = {100, 200, 300, 400, 500, 600};
 
-        assertTrue(search_recursive(input, 100) == 0);
-        assertTrue(search_recursive(input, 500) == 4);
-        assertTrue(search_recursive(input, 600) == 5);
-        assertTrue(search_recursive(input, 34500) == -1);
+        assertTrue(search(input, 100) == 0);
+        assertTrue(search(input, 500) == 4);
+        assertTrue(search(input, 600) == 5);
+        assertTrue(search(input, 34500) == -1);
     }
 
     /**
@@ -22,7 +22,7 @@ public class BinarySearchRecursive {
      * If the target is not present, return -1
      */
 
-    public static int search_recursive(int[] input, int target){
+    public static int search(int[] input, int target){
         return _search_recursive(input, target, 0, input.length-1);
     }
 
