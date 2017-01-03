@@ -7,7 +7,7 @@ public class FibonacciMemoization {
 
     static long fibMem[];
     public static void main(String args[]) {
-        int n=1000;
+        int n=40;
         fibMem=new long[n];
         long result = new FibonacciMemoization().fib(n);
         System.out.println(result);
@@ -23,5 +23,4 @@ public class FibonacciMemoization {
             return fibMem[k-1];
         }
     }
-
 }

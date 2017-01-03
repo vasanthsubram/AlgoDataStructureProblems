@@ -1,4 +1,4 @@
-package algorithms.general;
+package algorithms.bitmanipulation;
 
 import java.util.Arrays;
 
