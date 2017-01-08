@@ -23,7 +23,7 @@ public class SimpleStack {
 	
 	public void push(int newElement){
 		if(isFull()){
-			throw new StackFullException("SimpleStack full");
+			throw new RuntimeException("SimpleStack full");
 		}
 		top++;
 		contents[top]=newElement;
@@ -32,7 +32,7 @@ public class SimpleStack {
 	
 	public int pop() {
 		if(isEmpty()){
-			throw new EmptyStackException("Simple stack is empty");
+			throw new RuntimeException("Simple stack is empty");
 		}
 		int val = contents[top];
 		top--;

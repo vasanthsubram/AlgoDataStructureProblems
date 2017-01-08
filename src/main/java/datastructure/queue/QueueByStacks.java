@@ -33,7 +33,7 @@ public class QueueByStacks<T> {
 	
 	public T dequeue(){
 		if(primary.isEmpty()){
-			throw new QueueEmptyException();
+			throw new RuntimeException("Queue Empty");
 		}
 		while(!primary.isEmpty()){
 			scratch.push(primary.pop());

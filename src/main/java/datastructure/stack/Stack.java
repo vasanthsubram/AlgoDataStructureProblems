@@ -27,7 +27,7 @@ public class Stack<T> {
 	
 	public void push(T newElement){
 		if(top==contents.length-1){
-			throw new StackFullException("Stack full");
+			throw new RuntimeException("Stack full");
 		}
 		top++;
 		contents[top]=newElement;
@@ -35,7 +35,7 @@ public class Stack<T> {
 	
 	public T pop() {
 		if(top==-1){
-			throw new EmptyStackException("Stack is empty");
+			throw new RuntimeException("Stack is empty");
 		}
 		T val = contents[top];
 		contents[top]=null;	//stop the leak
