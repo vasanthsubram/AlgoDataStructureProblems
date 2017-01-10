@@ -1,48 +1,16 @@
 package datastructure.tree;
 
+import java.util.Comparator;
+import java.util.Stack;
+
 public class BST {
 	protected BSTNode root = null;
-
-	public BST() {
-	}
-
-	public void clear() {
-		root = null;
-	}
 
 	public boolean isEmpty() {
 		return root == null;
 	}
 
-	public void insert(Comparable el) {
-		BSTNode p = root, prev = null;
-		
-		if (root == null){ // tree is empty;
-			root = new BSTNode(el);
-			return;
-		}
-		while (p != null) { // find a place for inserting new node;
-			prev = p; 
-			if (p.el.compareTo(el) < 0)
-				p = p.right;
-			else
-				p = p.left;
-		}
-		
-		if (prev.el.compareTo(el) < 0)
-			prev.right = new BSTNode(el);
-		else
-			prev.left = new BSTNode(el);
-	}
-
-	public boolean isInTree(Comparable el) {
-		return search(el) != null;
-	}
-
-	public Comparable search(Comparable el) {
-		return search(root, el);
-	}
-
+	//search
 	protected Comparable search(BSTNode p, Comparable el) {
 		while (p != null){
 			if (el.equals(p.el))
@@ -55,17 +23,31 @@ public class BST {
 		return null;
 	}
 
-	public void preorder() {
-		preorder(root);
+	//insert
+	public void insert(Comparable val){
+		BSTNode p = root, prev=null;
+		BSTNode newNode =new BSTNode(val);
+
+		if(root==null){// tree is empty;
+			root=newNode;
+			return;
+		}
+		while(p!=null){// find a place for inserting new node;
+			prev=p;
+			if(p.el.compareTo(val)<0){
+				p=p.right;
+			} else{
+				p=p.left;
+			}
+		}
+
+		if(prev.el.compareTo(val)<0){
+			prev.right=newNode;
+		} else{
+			prev.left=newNode;
+		}
 	}
 
-	public void inorder() {
-		inorder(root);
-	}
-
-	public void postorder() {
-		postorder(root);
-	}
 
 	protected void visit(BSTNode p) {
 		System.out.print(p.el + " ");
@@ -181,40 +163,40 @@ public class BST {
 
 	public void iterativePreorder() {
 		BSTNode p = root;
+		if (p == null) {
+			return;
+		}
 		Stack stack = new Stack();
-		if (p != null) {
-			stack.push(p);
-			while (!stack.isEmpty()) {
-				p = (BSTNode) stack.pop();
-				visit(p);
-				if (p.right != null)
-					stack.push(p.right);
-				if (p.left != null) // left child pushed after right, to be on the top of the stack
-					stack.push(p.left);
+		stack.push(p);
+
+		while (!stack.isEmpty()) {
+			p = (BSTNode) stack.pop();
+			visit(p);
+			if (p.right != null)
+				stack.push(p.right);
+			if (p.left != null) // left child pushed after right, to be on the top of the stack
+				stack.push(p.left);
+		}
+	}
+
+	public void iterativeInOrder() {
+		final Stack<BSTNode> stack = new Stack();
+		BSTNode p = root;
+
+		while (!stack.isEmpty() || p != null) {
+			if (p != null) {
+				//push left nodes until null
+				stack.push(p);
+				p = p.left;
+			} else {
+				p = stack.pop();
+				System.out.print(p.el + " ");
+				p = p.right;
 			}
 		}
 	}
 
-	
-	public void iterativeInorder() {
-        final Stack stack = new Stack();
 
-        BSTNode node = root;
-
-        while (!stack.isEmpty() || node != null) {
-            if (node != null) {
-            	//push left nodes until null
-                stack.push(node); 	
-                node = node.left;
-            } else {
-               node = (BSTNode)stack.pop();
-               System.out.print(node.el + " "); 
-               node = node.right; 
-            }
-        }
-    }
-	
-	
 	public void iterativePostorder2() {
 		BSTNode p = root;
 		Stack travStack = new Stack(), output = new Stack();
@@ -364,25 +346,6 @@ public class BST {
 		}
 	}
 
-//	public void print(){
-//	
-//		BSTNode p = root;
-//		Stack stack = new Stack();
-//		if (p != null) {
-//			stack.push(p);
-//			while (!stack.isEmpty()) {
-//				p = (BSTNode) stack.pop();
-//				String tabs=tabs(depth(p));
-//				System.out.println(tabs + p.el);
-//				if (p.right != null)
-//					stack.push(p.right);
-//				if (p.left != null) // left child pushed after right, to be on the top of the stack
-//					stack.push(p.left);
-//			}
-//		}
-//	}
-//	
-	
 	public void print(){
 		inorder(root);
 	}
@@ -394,68 +357,26 @@ public class BST {
 		}
 		return sb.toString();
 	}
-	
-	public int height(BSTNode node) {
-	 if(node == null) return -1;
 
+	//height of node under the given node
+	public int height(BSTNode node) {
+	 if(node == null) {
+		 return -1;
+	 }
 	 int x =1 + Math.max(height(node.left), height(node.right));
 	 return x;
 	}
-	
-	public Comparable min(){
-		BSTNode p=root, prev=null;
-		
-		while(p!=null){
-			prev=p;
-			p=p.left;
-		}
-		return prev.el;
-	}
-	
-	public Comparable max(){
-		BSTNode p=root, prev=null;
-		
-		while(p!=null){
-			prev=p;
-			p=p.right;
-		}
-		return prev.el;
-	}
-	
-	public Comparable minR(){
-		if(isEmpty()) return null;
-		return minR(root).el;
-	}
-	
-	public BSTNode minR(BSTNode n){
-		if(n.left==null){
-			return n;
-		}
-		return minR(n.left);
-	}
-	
-	public Comparable maxR(){
-		if(isEmpty()) return null;
-		return maxR(root).el;
-	}
-	
-	public BSTNode maxR(BSTNode n){
-		if(n.right==null){
-			return n;
-		}
-		return maxR(n.right);
-	}
-	
+
 	//size of tree under the given node
-	public int size(BSTNode node){
+	public int sizeR(BSTNode node){
 		if(node==null){
 			return 0;
 		}
-		return 1 + size(node.left)+size(node.right);
+		return 1 + sizeR(node.left)+sizeR(node.right);
 	}
 
 	//size of tree under the given node - iterative way
-	public int sizeIterative(BSTNode node){
+	public int size(BSTNode node){
 		int size=0;
 		Stack s = new Stack();	
 		s.push(node);
@@ -488,7 +409,54 @@ public class BST {
 		}
 		return -1;
 	}
-	
+
+
+	//Min
+	public Comparable min(){
+		BSTNode p=root;
+
+		while(p.left!=null){
+			p=p.left;
+		}
+		return p.el;
+	}
+
+	public Comparable minR(){
+		if(isEmpty()) return null;
+		return minR(root).el;
+	}
+
+	public BSTNode minR(BSTNode n){
+		if(n.left==null){
+			return n;
+		}
+		return minR(n.left);
+	}
+
+
+	//Max
+	public Comparable max(){
+		BSTNode p=root;
+
+		while(p.right!=null){
+			p=p.right;
+		}
+		return p.el;
+	}
+
+	public Comparable maxR(){
+		if(isEmpty()) return null;
+		return maxR(root).el;
+	}
+
+	public BSTNode maxR(BSTNode n){
+		if(n.right==null){
+			return n;
+		}
+		return maxR(n.right);
+	}
+
+
 //	
 //	public int maxDepth(){
 //		BSTNode p=root;

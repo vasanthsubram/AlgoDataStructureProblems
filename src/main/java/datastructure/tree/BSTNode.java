@@ -15,7 +15,7 @@ public class BSTNode<T> {
     public BSTNode(Comparable<T> el, BSTNode<T> lt, BSTNode<T> rt) {
         this.el = el; left = lt; right = rt;
     }
-    
+
     @Override
     public String toString(){
     	if(el==null) return " - ";
