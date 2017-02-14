@@ -1,4 +1,4 @@
-package datastructure.graph;
+package datastructure.graph.directed;
 
 /**
  * Created by vasanthakumarsubramanian on 1/10/17.
@@ -6,12 +6,9 @@ package datastructure.graph;
 public class GraphTest {
     public static void main(String[] args) {
 /*
-        sea ------->  dc
-         \              ⇑
-         \              \
-         \              \
-         ↓              \
-         sfo---------> nyc
+        sea ------->  nyc ----> dc
+                       nyc ----> sfo
+        sea -------> sfo
 
 */
         Vertex<Integer> nyc = new Vertex<>("NYC");

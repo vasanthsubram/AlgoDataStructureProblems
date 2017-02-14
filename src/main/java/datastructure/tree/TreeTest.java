@@ -29,7 +29,10 @@ public class TreeTest {
 		tree.insert(58);
 		tree.insert(32);
 
-		tree.copy().print();
+		System.out.println();
+		tree.copy().postorder();
+
+//		tree.copy().print();
 //		System.out.println(tree.depth(new BSTNode(32)));
 	}
 

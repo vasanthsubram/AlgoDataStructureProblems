@@ -1,6 +1,7 @@
 package datastructure.tree;
 
-import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BST {
@@ -53,7 +54,13 @@ public class BST {
 		System.out.print(p.el + " ");
 	}
 
-	protected void inorder(BSTNode p) {
+	public void inorder(){
+		if(root==null){
+			return;
+		}
+		inorder(root);
+	}
+	private void inorder(BSTNode p) {
 		if (p != null) {
 			inorder(p.left);
 			visit(p);
@@ -61,7 +68,13 @@ public class BST {
 		}
 	}
 
-	protected void preorder(BSTNode p) {
+	public  void preorder(){
+		if(root==null){
+			return;
+		}
+		preorder(root);
+	}
+	private void preorder(BSTNode p) {
 		if (p != null) {
 			visit(p);
 			preorder(p.left);
@@ -69,7 +82,13 @@ public class BST {
 		}
 	}
 
-	protected void postorder(BSTNode p) {
+	public void postorder() {
+		if(root==null){
+			return;
+		}
+		postorder(root);
+	}
+	private void postorder(BSTNode p) {
 		if (p != null) {
 			postorder(p.left);
 			postorder(p.right);
@@ -245,15 +264,15 @@ public class BST {
 		if (p == null) {
 			return;
 		}
-		Queue queue = new Queue();
-		queue.enqueue(p);
+		Queue<BSTNode> queue = new LinkedList<>();
+		queue.add(p);
 		while (!queue.isEmpty()) {
-			p = (BSTNode) queue.dequeue();
+			p = queue.remove();
 			visit(p);
 			if (p.left != null)
-				queue.enqueue(p.left);
+				queue.add(p.left);
 			if (p.right != null)
-				queue.enqueue(p.right);
+				queue.add(p.right);
 		}
 	}
 
@@ -472,23 +491,23 @@ public class BST {
 		BSTNode q = new BSTNode(p.el);
 		newTree.root=q;
 		
-		Queue queue = new Queue();
-		Queue newQueue = new Queue();
+		Queue<BSTNode> queue = new LinkedList<>();
+		Queue<BSTNode> newQueue = new LinkedList<>();
 		
-		queue.enqueue(p);
-		newQueue.enqueue(q);
+		queue.add(p);
+		newQueue.add(q);
 		while (!queue.isEmpty()) {
-			p = (BSTNode) queue.dequeue();
-			q = (BSTNode) newQueue.dequeue();
+			p =  queue.remove();
+			q =  newQueue.remove();
 			if (p.left != null){
-				queue.enqueue(p.left);
+				queue.add(p.left);
 				q.left=new BSTNode(p.left.el);
-				newQueue.enqueue(q.left);			
+				newQueue.add(q.left);
 			}
 			if (p.right != null){
-				queue.enqueue(p.right);
+				queue.add(p.right);
 				q.right=new BSTNode(p.right.el);
-				newQueue.enqueue(q.right);
+				newQueue.add(q.right);
 			}
 		}
 		return newTree;
@@ -498,28 +517,28 @@ public class BST {
 		BSTNode a = aTree.root;
 		BSTNode b = bTree.root;
 		
-		Queue aQ = new Queue();
-		Queue bQ = new Queue();
+		Queue<BSTNode> aQ =  new LinkedList<>();;
+		Queue<BSTNode> bQ =  new LinkedList<>();;
 		
-		aQ.enqueue(a);
-		bQ.enqueue(b);
+		aQ.add(a);
+		bQ.add(b);
 		while (!aQ.isEmpty()) {
-			a = (BSTNode) aQ.dequeue();
-			b = (BSTNode) bQ.dequeue();
+			a = aQ.remove();
+			b = bQ.remove();
 			if(a.el.compareTo(b.el) !=0){
 				return false;
 			}
 			if (a.left != null){
-				aQ.enqueue(a.left);
+				aQ.add(a.left);
 			}
 			if(b.left!=null){
-				bQ.enqueue(b.left);			
+				bQ.add(b.left);
 			}
 			if (a.right != null){
-				aQ.enqueue(a.right);
+				aQ.add(a.right);
 			}
 			if(b.right !=null){
-				bQ.enqueue(b.right);	
+				bQ.add(b.right);
 			}
 		}
 		return true;

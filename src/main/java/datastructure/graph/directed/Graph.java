@@ -1,4 +1,4 @@
-package datastructure.graph;
+package datastructure.graph.directed;
 
 import java.util.ArrayList;
 import java.util.Comparator;

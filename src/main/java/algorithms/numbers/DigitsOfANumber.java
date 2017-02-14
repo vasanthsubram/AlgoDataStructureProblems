@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class DigitsOfANumber {
 
 	public static void main(String[] args) {
-		int x = 1234567890;
+		int x = 123456;
 		LinkedList<Integer> stack = new LinkedList<Integer>();
 
 		while(x>0){

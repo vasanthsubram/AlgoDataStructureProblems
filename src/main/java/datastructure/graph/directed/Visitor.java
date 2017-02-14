@@ -1,4 +1,4 @@
-package datastructure.graph;
+package datastructure.graph.directed;
 
 
 /**
