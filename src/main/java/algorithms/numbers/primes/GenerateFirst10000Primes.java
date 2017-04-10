@@ -1,6 +1,6 @@
 package algorithms.numbers.primes;
 
-import algorithms.numbers.primes.detector.PrimeDetectorRoot;
+import algorithms.numbers.primes.detector.PrimeDetector2;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -14,7 +14,7 @@ public class GenerateFirst10000Primes {
 		listOfPrimes[0] =2;
 		count++;
 		for (int i = 3; count < MAX; i = i + 2) {
-			if (PrimeDetectorRoot.isPrime(i)) {
+			if (PrimeDetector2.isPrime(i)) {
 				listOfPrimes[count] = i;
 				count++;
 			}

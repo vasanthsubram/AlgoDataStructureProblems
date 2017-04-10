@@ -1,6 +1,6 @@
 package algorithms.numbers.primes.detector;
 
-public class PrimeDetectorRoot {
+public class PrimeDetector2 {
 	private static int count = 0;
 	public static void main(String args[]){
 	
@@ -30,32 +30,10 @@ public class PrimeDetectorRoot {
 		for (long i = 3; i <= max; i = i + 2) {
 			count++;
 			if ((input % i) == 0) {
-				//System.out.println("Divisible by  " + i);
 				return false;
 			}
 		}
 		return result;
 	}
-	public static boolean isPrime(long input, long[] lesserPrimes) {
-		boolean result = true;
-		
-		if (input == 2) 
-			return true;
-		if ((input % 2) == 0)
-			return false;
-	
-		double max= Math.sqrt(input);
-		for (long p : lesserPrimes) {
-			
-			if(p==0  || p>=max){
-				return false;
-			}
-			if ((input % p) == 0) {
-				//System.out.println("Divisible by  " + i);
-				return false;
-			}
-		}
-		return result;
-	}
-	
+
 }
