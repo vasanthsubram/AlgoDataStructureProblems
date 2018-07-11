@@ -180,40 +180,120 @@ public class BST {
 			System.out.println("the tree is empty");
 	}
 
-	public void iterativePreorder() {
+//	public void iterativePreorder() {
+//		BSTNode p = root;
+//		if (p == null) {
+//			return;
+//		}
+//		Stack stack = new Stack();
+//		stack.push(p);
+//
+//		while (!stack.isEmpty()) {
+//			p = (BSTNode) stack.pop();
+//			visit(p);
+//			if (p.right != null)
+//				stack.push(p.right);
+//			if (p.left != null) // left child pushed after right, to be on the top of the stack
+//				stack.push(p.left);
+//		}
+//	}
+
+	public void iteratvePreOrder(){
+		Stack<BSTNode> stack = new Stack<>();
 		BSTNode p = root;
-		if (p == null) {
-			return;
-		}
-		Stack stack = new Stack();
 		stack.push(p);
 
-		while (!stack.isEmpty()) {
-			p = (BSTNode) stack.pop();
-			visit(p);
-			if (p.right != null)
-				stack.push(p.right);
-			if (p.left != null) // left child pushed after right, to be on the top of the stack
-				stack.push(p.left);
-		}
+
+		p = stack.pop();
+		visit(p);
+
+
+
+
 	}
 
-	public void iterativeInOrder() {
-		final Stack<BSTNode> stack = new Stack();
+	public void iterativeInOrder(){
+		Stack<BSTNode> stack = new Stack<>();
 		BSTNode p = root;
 
-		while (!stack.isEmpty() || p != null) {
+		while(!stack.isEmpty() || p != null) {
 			if (p != null) {
-				//push left nodes until null
 				stack.push(p);
 				p = p.left;
 			} else {
 				p = stack.pop();
-				System.out.print(p.el + " ");
+				visit(p);
 				p = p.right;
 			}
 		}
 	}
+
+	public void iterativeInOrder_p(){
+		System.out.println("iterativeInOrder_p");
+		Stack<BSTNode> stack = new Stack<>();
+		BSTNode p = root;
+
+		while(!stack.isEmpty() || p != null) {
+			while(p!=null){
+				stack.push(p);
+				p=p.left;
+			}
+			if(stack.isEmpty()){
+				return;
+			}
+			p = stack.pop();
+			visit(p);
+			p = p.right;
+		}
+	}
+
+	public void iterativePostorder() {
+		BSTNode p = root, visited = root;
+		Stack stack = new Stack();
+		while (p != null) {
+			//go to left most node while pushing the nodes on the way to stack
+			for (; p.left != null; p = p.left)
+				stack.push(p);
+			//go inside while
+				// if p is a leaf node  (as the for loop exhausted the left node) or
+				//if the last visited node is actually my right child (ie., have already visited both my children)
+			while (p != null && (p.right == null || p.right == visited)) {
+				visit(p);
+				visited = p;
+				if (stack.isEmpty())
+					return;
+				//all child nodes done, move up to the parent
+				p = (BSTNode) stack.pop();
+			}
+			//there is a right node, so push myself and follow the right subtree
+			stack.push(p);
+			p = p.right;
+		}
+	}
+
+	public void iterativePostorder_p(){
+		System.out.println("iterativePostorder_p");
+		Stack<BSTNode> stack = new Stack<>();
+		BSTNode p = root, visited=root;
+
+		while(p!=null) {
+			while(p.left!=null){
+				stack.push(p);
+				p=p.left;
+			}
+			while (p.right == null || (p.right == visited)) {
+				visit(p);
+				visited = p;
+				if (stack.isEmpty()) {
+					return;
+				}
+				p = stack.pop();
+			}
+			stack.push(p);
+			p = p.right;
+		}
+	}
+
 
 
 	public void iterativePostorder2() {
@@ -237,27 +317,23 @@ public class BST {
 	}
 
 
-	public void iterativePostorder() {
-		BSTNode p = root, visited = root;
-		Stack stack = new Stack();
-		while (p != null) {
-			//go to left most node while pushing the nodes on the way to stack
-			for (; p.left != null; p = p.left)
-				stack.push(p);
-			//go inside while, if p is a leaf node  (as the for loop exhausted the left node)
-			//or if the last visited node is actually my right child (ie., have already visited both my children)
-			while (p != null && (p.right == null || p.right == visited)) {
-				visit(p);
-				visited = p;
-				if (stack.isEmpty())
-					return;
-				p = (BSTNode) stack.pop();
-			}
-			//there is a right node, so push myself and follow the right subtree
-			stack.push(p);
-			p = p.right;
-		}
-	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public void breadthFirst() {
 		BSTNode p = root;

@@ -13,7 +13,6 @@ public class BitSetExample {
         b.set(0);
         b.set(1);
         b.set(2);
-
         // Get values of these bit positions.
         boolean bit1 = b.get(1);
         boolean bit2 = b.get(2);

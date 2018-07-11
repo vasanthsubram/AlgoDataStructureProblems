@@ -2,47 +2,48 @@ package algorithms.arrays;
 
 import java.util.Arrays;
 
-/**
- * Not done Yet
- *
- * Created by vasanthakumarsubramanian on 1/7/17.
- */
+
 public class RotateMatrix {
-    static int size=3;;
-    static int[][] m=new int[size][size];
+    static int size=4;
+    static int[][] source =new int[size][size];
 
     public static void main(String[] args) {
-
         initMatrix();
-//        printMatrix();
-
-        //rotate
-        for(int row=0;row<=size/2;row++){
-            for(int col=0;col<=size/2;col++) {
-                //tl = top left
-                //tr = top right
-                //bl = bottom left
-                //br = bottom right
-
-                int tl = m[col][row];
-                int tr = m[size - 1 - col][row];
-                int br = m[size - 1 - col][size - 1 - col];
-                int bl = m[size - 1 - col][row];
-
-                m[col][size - 1 - col] = tl;
-                m[size - 1 - col][size - 1 - col] = tr;
-                m[size - 1 - col][col] = br;
-                m[col][col] = bl;
-
-                printMatrix();
-            }
-        }
+        printMatrix(source);
+        int[][] result=clockwise();
+        System.out.println();
+        System.out.println("clockwise");
+        printMatrix(result);
+        int[][] result2=anticlockwise();
+        System.out.println();
+        System.out.println("anti-clockwise");
+        printMatrix(result2);
     }
 
-    static void printMatrix(){
-        System.out.println();
+    static int[][] anticlockwise(){
+        int[][] result=new int[size][size];
+        for(int row=0;row<size;row++){
+            for(int col=0;col<size;col++) {
+                result[size-col-1][row]= source[row][col];
+            }
+        }
+        return result;
+    }
+
+    static int[][] clockwise(){
+        int[][] result=new int[size][size];
+        for(int row=0;row<size;row++){
+            for(int col=0;col<size;col++) {
+                result[col][size-row-1]= source[row][col];
+            }
+        }
+        return result;
+    }
+
+
+    static void printMatrix(int[][] matrix){
         for(int i=0;i<size;i++) {
-            System.out.println(Arrays.toString(m[i]));
+            System.out.println(Arrays.toString(matrix[i]));
         }
     }
 
@@ -50,7 +51,7 @@ public class RotateMatrix {
         int init=0;
         for(int i=0;i<size;i++){
             for(int j=0;j<size;j++){
-                m[i][j]=init;
+                source[i][j]=init;
                 init++;
             }
         }

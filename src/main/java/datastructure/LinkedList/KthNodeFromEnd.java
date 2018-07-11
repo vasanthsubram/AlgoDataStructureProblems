@@ -14,12 +14,11 @@ public class KthNodeFromEnd {
         int k=2;
 
        for(int i=0;i<k;i++){
-           if(p1.next!=null) {
-               p1 = p1.next;
-           } else{
+           if(p1==null){
                System.out.println("There are not enough elements");
                return;
            }
+           p1 = p1.next;
         }
 
         while(p1!=null){

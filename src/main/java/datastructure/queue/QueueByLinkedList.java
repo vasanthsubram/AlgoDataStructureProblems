@@ -1,42 +1,45 @@
 package datastructure.queue;
 
-/**
- * Need head and tail node and total to keep track of elements
- * Initially head and tail point to the same node. 
- * new nodes are added to the tail and tail points to the new node
- */
-public class QueueByLinkedList {
+import java.util.NoSuchElementException;
 
-	private Node head, tail;
-	int total=0;
-	
-	public void enqueue(int  newVal){
-		Node newNode = new Node(newVal);
-		if(total==0){
-			head=newNode;
-			tail=newNode;
-		} else{
-			tail.next=newNode;
-			tail=newNode;
-		}
-		total++;
-	}
-	
-	public Node dequeue(){
-		Node result=head;
-		head=head.next;
-		return result;
-	}
-	private class Node{
-		Node next;
-		int value;
-		public Node(int newVal){
+/**
+ * Need front and back node and total to keep track of elements
+ * new nodes are added to the back and back points to the new node
+ */
+public class QueueByLinkedList<T> {
+
+	private class Node<T>{
+		Node<T> next;
+		T value;
+		public Node(T newVal){
 			value=newVal;
 		}
 	}
+	private Node<T> front, back;
+
+	public void enqueue(T  val){
+		Node<T> n = new Node(val);
+		if(front ==null){
+			front = back =n;
+		} else{
+			back.next=n;
+			back =n;
+		}
+	}
+	
+	public T dequeue(){
+		if(front==null) throw new NoSuchElementException();
+		T result= front.value;
+		front = front.next;
+		if(front==null) {
+			back=null;
+		}
+		return result;
+	}
+
 	
 	public String toString(){
-		Node c = head;
+		Node c = front;
 		StringBuffer buf = new StringBuffer();
 		
 		while(c!=null){

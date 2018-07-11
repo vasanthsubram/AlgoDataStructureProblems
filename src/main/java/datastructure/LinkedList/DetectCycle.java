@@ -1,6 +1,9 @@
 package datastructure.LinkedList;
 
+import utils.LinkedListUtils;
+
 import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
 
 /**
@@ -9,7 +12,7 @@ import java.util.List;
 public class DetectCycle {
 
     public static void main(String[] args) {
-        LinkedList list = LinkedList.createList();
+        LinkedList list = LinkedListUtils.createList();
         list.printList();
         detectCycle(list);
 

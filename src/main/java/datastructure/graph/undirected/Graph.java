@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class Graph {
 
-    private HashMap<String, datastructure.graph.undirected.Vertex> vertices;
+    private HashMap<String, Vertex> vertices;
     private HashMap<Integer, Edge> edges;
 
     public Graph(){

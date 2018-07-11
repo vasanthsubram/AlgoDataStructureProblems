@@ -6,7 +6,7 @@ public class TreeTest {
 
 	public static void main(String[] args) {
 		/*
-		 					87
+		 				   87
 		 				/      \
 		 			50			111
 		 		   /  \          /
@@ -30,9 +30,16 @@ public class TreeTest {
 		tree.insert(32);
 
 		System.out.println();
-		tree.copy().postorder();
 
-//		tree.copy().print();
+//		tree.iterativePreOrder();
+		tree.iterativePostorder_p();
+
+		System.out.println();
+		tree.iterativeInOrder_p();
+
+
+		System.out.println("\nPrint tree");
+		tree.print();
 //		System.out.println(tree.depth(new BSTNode(32)));
 	}
 

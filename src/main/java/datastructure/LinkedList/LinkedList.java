@@ -1,18 +1,14 @@
 package datastructure.LinkedList;
 
-import sun.awt.image.ImageWatched;
-
-import java.util.ArrayList;
-import java.util.List;
+import utils.LinkedListUtils;
 
 /**
  * Simple linked list
- * Add or delete a link at the beginning of the linked list
  *
  * @author subramav
  *
  */
-class LinkedList {
+public class LinkedList {
 	private Node head;
 
 	public Node getHead() {
@@ -32,8 +28,8 @@ class LinkedList {
 	}
 
 	// Inserts a new Node at the first of the list
-	public void insert(int d1) {
-		Node node = new Node(d1);
+	public void insert(int t) {
+		Node node = new Node(t);
 		node.next = head;
 		head = node;
 	}
@@ -45,34 +41,53 @@ class LinkedList {
 		return temp;
 	}
 
+
+	public void delete(int t) {
+		Node node = head, prev=head;
+
+		if(head==null) return;
+
+		if(node.data==t){
+			head=head.next;
+			return;
+		}
+
+		while(node!=null) {
+			if(node.data==t){
+				prev.next=node.next;
+				return;
+			}
+			prev=node;
+			node=node.next;
+		}
+	}
+
 	 public static void main(String[] args) {
-		 LinkedList list = createList();
-
+		 LinkedList list = LinkedListUtils.createList();
 		 list.printList();
-
-		 list = createList();
-		 list.delete();
+		 list.delete(8);
+		 list.printList();
+		 list.delete(1);
+		 list.printList();
+		 list.delete(9);
+		 list.printList();
+		 list.delete(3);
+		 list.printList();
+		 list.delete(5);
 		 list.printList();
 	 }
 
-	public static LinkedList createList(){
-		LinkedList list = new LinkedList();
-
-		list.insert(3);
-		list.insert(5);
-		list.insert(1);
-		list.insert(8);
-		return list;
-	}
 
 	public void printList() {
-		Node currentNode = head;
+		Node node = head;
 		System.out.print("List: ");
-		while (currentNode != null) {
-			currentNode.printLink();
-			currentNode = currentNode.next;
+		while (node != null) {
+			node.printLink();
+			node = node.next;
 		}
 		System.out.println("");
 	}
+
+
 
 }
