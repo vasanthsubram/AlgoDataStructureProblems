@@ -9,11 +9,12 @@ package algorithms.dynamic;
 public class FibonacciRecursive {
 
     public static void main(String args[]) {
-        long result = new FibonacciRecursive().fib(1000);
+        long result = fib(5);
         System.out.println(result);
     }
     
-    long fib(long k) {
+    static long fib(long k) {
+        System.out.println(k);
         if (k < 2) {
             return k;
         } else {

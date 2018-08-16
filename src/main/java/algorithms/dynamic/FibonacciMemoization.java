@@ -7,13 +7,13 @@ public class FibonacciMemoization {
 
     static long fibMem[];
     public static void main(String args[]) {
-        int n=40;
+        int n=50;
         fibMem=new long[n];
-        long result = new FibonacciMemoization().fib(n);
+        long result = fib(n);
         System.out.println(result);
     }
 
-    long fib(int k) {
+    static long fib(int k) {
         if (k < 2) {
             return k;
         } else {

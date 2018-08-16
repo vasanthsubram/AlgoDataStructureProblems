@@ -3,16 +3,17 @@ package algorithms.dynamic;
 public class Fibonacci {
 
 	public static void main(String[] args) {
-		int x1 = 1;
-		int x2 = 1;
+		int x1 = 1, x2 = 1;
 
 		System.out.println(x1);
 		System.out.println(x2);
 
-		for (int i = 0; i < 1000; i++) {
-			x2 = x1 + x2;
-			x1 = x2 - x1;
-			System.out.println(x2);
+		for (int i = 0; i < 29; i++) {
+			int sum = x1 +x2;
+			System.out.print(sum);
+			System.out.print("\t");
+			x1=x2;
+			x2=sum;
 		}
 	}
 }

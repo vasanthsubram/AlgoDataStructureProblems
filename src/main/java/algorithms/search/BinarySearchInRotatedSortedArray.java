@@ -1,12 +1,19 @@
 package algorithms.search;
 
+/*
+    The pivot element is the only one where is next element is smaller than itself - here 10
+    Find the pivot element
+    If the target is less than the pivot element, then do the binary search from 0 to index of pivot;
+    otherwise index of pivot and end of array
+ */
+
 public class BinarySearchInRotatedSortedArray {
 
     public static void main(String args[]) {
         // Let us search 3 in below array
         int arr1[] = {5, 6, 7, 8, 9, 10, 1, 2, 3};
         int n = arr1.length;
-        int key = 3;
+        int key = 9;
         System.out.println("Index of the element is : " + pivotedBinarySearch(arr1, n, key));
     }
 
