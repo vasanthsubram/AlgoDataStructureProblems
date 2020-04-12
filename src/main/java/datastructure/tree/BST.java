@@ -11,6 +11,10 @@ public class BST {
 		return root == null;
 	}
 
+	public BSTNode getRoot(){
+		return root;
+	}
+
 	//search
 	protected Comparable search(BSTNode p, Comparable el) {
 		while (p != null){

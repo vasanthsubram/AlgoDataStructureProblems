@@ -1,8 +1,8 @@
 package datastructure.tree;
 
 public class BSTNode<T> {
-    protected Comparable<T> el;
-    protected BSTNode<T> left, right;
+    public Comparable<T> el;
+    public BSTNode<T> left, right;
     
     public BSTNode() {
         left = right = null;
@@ -15,6 +15,10 @@ public class BSTNode<T> {
     public BSTNode(Comparable<T> el, BSTNode<T> lt, BSTNode<T> rt) {
         this.el = el; left = lt; right = rt;
     }
+
+  public boolean isLeaf(){
+    return (left == null && right == null);
+  }
 
     @Override
     public String toString(){

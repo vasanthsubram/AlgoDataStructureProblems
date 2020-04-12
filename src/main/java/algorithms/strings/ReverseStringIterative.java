@@ -1,4 +1,4 @@
-package algorithms.arrays;
+package algorithms.strings;
 
 /**
  * Reverse string in-place

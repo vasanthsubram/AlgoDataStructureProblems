@@ -9,16 +9,19 @@ import utils.LinkedListUtils;
  *
  */
 public class Reverse {
+    //start from head. Keep references to 3 nodes(n1,n2,n3) in vars
+    //reverse one link at a time.
+    //Shift the references by one to the right (n2 becomes n1, n3 becomes n2, next of n3 becomes n3)
+    //Make the last link of the original list as the head of the reversed list.
 
-    //reverse one link at a time
-    //start from left. Keep references to 3 nodes(n1,n2,n3) in vars
-    //reverse one link. Shift the references by one to the right (n2 becomes n1, n3 becomes n2, next of n3 becomes n3)
     public static void main(String[] args){
         LinkedList list = LinkedListUtils.createList();
         list.printList();
-        Node n1=list.getHead(),n2,n3;
-        n2=n1.next;
-        n3=n2.next;
+
+        // n1 -> n2 -> n3
+        Node n1=list.getHead();
+        Node n2=n1.next;
+        Node n3=n2.next;
         n1.next=null;   //this will become the last node
 
         while(n3 != null){

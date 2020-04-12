@@ -8,9 +8,9 @@ import datastructure.stack.Stack;
  * Keep two stacks - one primary and another scratch
  * To enqueue, simply push into primary
  * To dequeue,
- *      pop all elements from primary into scratch
- *      pop from scratch - this is the return value for dequeue operation
- *      now push all elements from scratch back into primary
+ *     if scratch is not empty, pop from it
+ *     If scratch is empty, pop all from primary and push them into scratch. Then pop from scratch\
+ *
  * @author vsubramanian
  * @param <T>
  */
@@ -24,14 +24,17 @@ public class QueueByStacks<T> {
 	}
 	
 	public boolean isEmpty(){
-		return primary.isEmpty();
+		return primary.isEmpty() && scratch.isEmpty();
 	}
 	
 	public void enqueue(T obj){
 		primary.push(obj);
 	}
-	
+
 	public T dequeue(){
+		if(!scratch.isEmpty()){
+			return scratch.pop();
+		}
 		if(primary.isEmpty()){
 			throw new RuntimeException("Queue Empty");
 		}
@@ -39,9 +42,7 @@ public class QueueByStacks<T> {
 			scratch.push(primary.pop());
 		}
 		T val= scratch.pop();
-		while(!scratch.isEmpty()){
-			primary.push(scratch.pop());
-		}
+
 		return val;
 	}
 	
@@ -57,7 +58,7 @@ public class QueueByStacks<T> {
 		String qOut="";
 		while(!q.isEmpty()){
 			qOut=qOut+q.dequeue()+" ";
-			System.out.println(q.primary);
+//			System.out.println(q.primary);
 		}
 		
 		System.out.println(qOut);

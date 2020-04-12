@@ -10,17 +10,17 @@ public class Reverse2 {
     public static void main(String[] args) {
         LinkedList list = LinkedListUtils.createList();
         list.printList();
-        Node p = list.getHead();
+
+        Node source = list.getHead();
+
         LinkedList reversed = new LinkedList();
-        while (p != null) {
-            Node temp = p.next;
-            if (reversed.getHead() == null) {
-                reversed.setHead(p);
-            } else {
+        reversed.insert(source.data);
+        source=source.next;
 
-
-            }
-            p = temp;
+        while (source != null) {
+            reversed.insert(source.data);
+            source=source.next;
         }
+        reversed.printList();
     }
 }

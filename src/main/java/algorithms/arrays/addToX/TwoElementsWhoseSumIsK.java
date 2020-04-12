@@ -1,4 +1,4 @@
-package algorithms.arrays;
+package algorithms.arrays.addToX;
 
 import java.util.HashMap;
 import java.util.Map;

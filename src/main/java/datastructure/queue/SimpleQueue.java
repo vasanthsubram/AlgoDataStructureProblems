@@ -1,10 +1,10 @@
 package datastructure.queue;
 
 /**
- * The queue grows from 0th position and front is incremented after every enqueue
+ * The queue grows from 0th position and size is incremented after every enqueue but front does not change
  * For dequeuing, front is incremented so the next element becomes the front
  * 
- * Only need 'front' and 'size' to keep track of the elements
+ * Only need 'front' and 'size' to keep track of the elements while the back is always derived
  * 
  * @author chq-vasanthakumars
  *

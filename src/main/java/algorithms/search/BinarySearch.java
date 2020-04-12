@@ -16,29 +16,15 @@ public class BinarySearch {
     int len = a.length;
 
     //edge cases
-    assertTrue(bsearch(a, a[len - 1]) == len - 1);
-    assertTrue(bsearch(a, a[0]) == 0);
+    assertTrue(search(a, a[len - 1]) == len - 1);
+    assertTrue(search(a, a[0]) == 0);
 
-    assertTrue(bsearch(a, 400) == 3);
-    assertTrue(bsearch(a, 200) == 1);
-    assertTrue(bsearch(a, 600) == 5);
-
-    //non existing
-    assertTrue(bsearch(a, 5500) == -1);
-
-
-    //----recursive
-    //edge cases
-    assertTrue(bsearch(a, a[len - 1]) == len - 1);
-    assertTrue(bsearch(a, a[0]) == 0);
-
-    assertTrue(bsearch(a, 400) == 3);
-    assertTrue(bsearch(a, 200) == 1);
-    assertTrue(bsearch(a, 600) == 5);
+    assertTrue(search(a, 400) == 3);
+    assertTrue(search(a, 200) == 1);
+    assertTrue(search(a, 600) == 5);
 
     //non existing
-    assertTrue(bsearch(a, 5500) == -1);
-
+    assertTrue(search(a, 5500) == -1);
   }
 
 
@@ -62,53 +48,4 @@ public class BinarySearch {
     return -1;
   }
 
-  //recursive
-  public static int recSearch(int[] input, int target) {
-    return _recSearch(input, target, 0, input.length - 1);
-  }
-
-  public static int _recSearch(int[] a, int t, int min, int max) {
-    if (max < min) {
-      return -1;
-    }
-
-    int mid = (min + max) / 2;
-
-    if (t == a[mid]) {
-      return mid;
-    }
-
-    if (t < a[mid]) {
-      max = mid - 1;
-    } else {
-      min = mid + 1;
-    }
-    return _recSearch(a, t, min, max);
-  }
-
-
-  static int bsearch(int[] a, int x) {
-    int max = a.length - 1, min = 0;
-
-    return _bsearch(a, x, max, min);
-  }
-
-  static int _bsearch(int[] a, int x, int max, int min){
-
-    if(max < min) return -1;
-
-    int mid = (max + min)/2;
-
-    if(x == a[mid]){
-      return mid;
-    }
-
-    if(x < a[mid]){
-      max = mid -1;
-    } else{
-      min = mid +1 ;
-    }
-
-    return _bsearch(a, x, max, min);
-  }
 }

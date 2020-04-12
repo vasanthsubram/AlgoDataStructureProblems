@@ -47,6 +47,7 @@ public class LinkedList {
 
 		if(head==null) return;
 
+		//if the head is the node to delete
 		if(node.data==t){
 			head=head.next;
 			return;

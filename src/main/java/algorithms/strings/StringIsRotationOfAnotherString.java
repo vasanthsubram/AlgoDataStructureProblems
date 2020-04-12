@@ -3,7 +3,7 @@ package algorithms.strings;
 /**
  * Created by vasanth on 3/30/17.
  */
-public class StringRotation {
+public class StringIsRotationOfAnotherString {
 
     public static void main(String[] args) {
         System.out.println(isRotation("ldgo", "gold"));

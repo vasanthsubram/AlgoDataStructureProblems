@@ -34,6 +34,7 @@ public class MultiplesOf3And5 {
 	//sum (multiples of 3) + sum(multiples of 5) - (sum of multiples of 15)
 	static void smartWay(){
 	 long start = System.currentTimeMillis();
+
 		long num3x = MAX/3;
 		if(MAX%3==0) num3x--;
 		long sumOf3x = 3* sumOfNum(num3x);
@@ -45,9 +46,11 @@ public class MultiplesOf3And5 {
 		long num15x = MAX/15;
 		if(MAX%15==0) num15x--;
 		long sumOf15x = 15* sumOfNum(num15x);
+
+		System.out.println(sumOf3x + sumOf5x-sumOf15x);
+
 		long end=System.currentTimeMillis();
 		System.out.println("Timt taken = " + (end-start));
-		System.out.println(sumOf3x + sumOf5x-sumOf15x);
  }
 	static long sumOfNum(long upto){
 //		System.out.println("Calculating sum of num upto " + upto);

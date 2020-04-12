@@ -5,22 +5,19 @@ package algorithms.dynamic;
  */
 public class FibonacciMemoization {
 
-    static long fibMem[];
+    static long f[];
     public static void main(String args[]) {
-        int n=50;
-        fibMem=new long[n];
+        int n=20;
+        f=new long[n+1];
         long result = fib(n);
         System.out.println(result);
     }
 
-    static long fib(int k) {
-        if (k < 2) {
-            return k;
-        } else {
-            if(fibMem[k-1]==0){
-                fibMem[k-1]= fib(k - 1) + fib(k - 2);
-            }
-            return fibMem[k-1];
-        }
+    static long fib(int n) {
+        if (n < 2) return n;
+        if(f[n]>0) return  f[n];
+
+        f[n]= fib(n - 1) + fib(n - 2);
+        return  f[n];
     }
 }

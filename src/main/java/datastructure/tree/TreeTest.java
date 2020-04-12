@@ -41,6 +41,9 @@ public class TreeTest {
 		System.out.println("\nPrint tree");
 		tree.print();
 //		System.out.println(tree.depth(new BSTNode(32)));
+
+		System.out.println();
+		System.out.println("tree height = " + tree.height(tree.getRoot()));
 	}
 
 

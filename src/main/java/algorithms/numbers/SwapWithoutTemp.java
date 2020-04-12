@@ -1,4 +1,4 @@
-package algorithms.general;
+package algorithms.numbers;
 
 public class SwapWithoutTemp {
 

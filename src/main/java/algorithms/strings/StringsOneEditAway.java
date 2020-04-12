@@ -1,4 +1,4 @@
-package algorithms.arrays;
+package algorithms.strings;
 
 public class StringsOneEditAway {
     public static void main(String args[]) {

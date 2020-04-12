@@ -1,4 +1,4 @@
-package algorithms.arrays;
+package algorithms.arrays.merging;
 
 import java.util.Arrays;
 

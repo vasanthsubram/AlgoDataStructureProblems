@@ -1,4 +1,4 @@
-package hacker.rank;
+package algorithms.stack;
 import java.util.Stack;
 /**
  * Created by vasanth on 11/26/16.
