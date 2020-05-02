@@ -344,18 +344,6 @@ public class BST {
     return p.el;
   }
 
-  public Comparable minR() {
-    if (isEmpty()) return null;
-    return minR(root).el;
-  }
-
-  public BSTNode minR(BSTNode n) {
-    if (n.left == null) {
-      return n;
-    }
-    return minR(n.left);
-  }
-
 
   //Max
   public Comparable max() {
@@ -379,15 +367,6 @@ public class BST {
     return maxR(n.right);
   }
 
-
-//	
-//	public int maxDepth(){
-//		BSTNode p=root;
-//		int maxD = 0;
-//		int d=0;
-//		
-//		
-//	}
 
   public BST copy() {
     BSTNode p = root;
@@ -449,25 +428,6 @@ public class BST {
     }
     return true;
   }
-//	
-//	public boolean check(){
-//		Stack s = new Stack();
-//		s.push(root);
-//		
-//		while(!s.isEmpty()){
-//			BSTNode n = (BSTNode)s.pop();
-//			
-//			if(n.left!=null) {
-//				if(n.left.el.compareTo(n.el)>=0) return false;
-//				s.push(n.left);
-//			}
-//			if(n.right != null){
-//				if(n.right.el.compareTo(n.el)<0) return false;
-//				s.push(n.right);
-//			}
-//		}
-//		return true;
-//	}
 
   public boolean isBST() {
     Holder h = new Holder();
@@ -510,12 +470,5 @@ public class BST {
     Comparable maxVal;
   }
 
-  public void reverse() {
-    BST newTree = new BST();
-    BSTNode n = null;
 
-    while ((n = minR(root)) != null) {
-
-    }
-  }
 }

@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class Scratch {
+public class ScratchTree {
 
   public static void main(String[] args) {
 
@@ -33,7 +33,17 @@ public class Scratch {
     bst.dfs();
 
     System.out.println("find");
-    bst.find(4);
+    System.out.println(bst.find(4));
+
+    System.out.println("max");
+    System.out.println(bst.max());
+
+    System.out.println("max recursion");
+    System.out.println(bst.max2());
+
+    System.out.println("Copy tree");
+    BST copy = bst.copy();
+    copy.inOrder();
   }
 
   static class BST{
@@ -141,7 +151,7 @@ public class Scratch {
           visit(p);
           return p.data;
         }
-        if ((p.left != null) &&val < p.left.data) {
+        if (val < p.data) {
           p = p.left;
         } else {
           p = p.right;
@@ -150,14 +160,69 @@ public class Scratch {
       return -1;
     }
 
+    public int max(){
+      BSTNode p = root;
+
+      while( p.right != null){
+        p = p.right;
+      }
+      return p.data;
+    }
+
+    public int max2(){
+      return max2(root).data;
+    }
+
+    public BSTNode max2(BSTNode p){
+      if(p.right==null){
+        return p;
+      }
+      return p.right;
+    }
     public void visit(BSTNode p){
       System.out.println(p.data);
     }
+
+    public BST copy(){
+      BST newTree = new BST();
+      BSTNode newRoot = new BSTNode(root.data);
+      newTree.root = newRoot;
+      Queue<BSTNode> oldTreeQueue = new LinkedList<>();
+      Queue<BSTNode> newTreeQueue = new LinkedList<>();
+
+      oldTreeQueue.add(root);
+      newTreeQueue.add(newRoot);
+
+      while (!oldTreeQueue.isEmpty()) {
+        BSTNode x = oldTreeQueue.remove();
+        BSTNode y = newTreeQueue.remove();
+
+        if (x.left != null) {
+          oldTreeQueue.add(x.left);
+          y.left = new BSTNode(x.left.data);
+          newTreeQueue.add(y.left);
+        }
+
+        if (x.right != null) {
+          oldTreeQueue.add(x.right);
+          y.right = new BSTNode(x.right.data);
+          newTreeQueue.add(y.right);
+        }
+      }
+      return newTree;
+    }
   }
+
 
   static class BSTNode{
     BSTNode left, right;
     int data;
+
+    public BSTNode(){}
+
+    public BSTNode(int val){
+      data = val;
+    }
   }
 
 
