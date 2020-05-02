@@ -24,6 +24,7 @@ public class ReverseStringRecursive {
         char temp=input[index];
         input[index]=input[len-index-1];
         input[len-index-1]=temp;
-        reverse(input, ++index);
+        index++;
+        reverse(input, index);
     }
 }

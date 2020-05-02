@@ -27,12 +27,13 @@ public class StringsOneEditAway {
         }
         boolean diffFlag = false;
         for (int i = 0, j = 0; i < smaller.length(); i++, j++) {
-            if (!(smaller.charAt(i) == larger.charAt(j))) {
+            if (smaller.charAt(i) != larger.charAt(j)) {
                 if (diffFlag) {
                     return false;
                 }
 
                 diffFlag = true;
+                //on mismatch, move one more char in bigger string
                 if (smaller.length() != larger.length()) {
                     j++;
                 }

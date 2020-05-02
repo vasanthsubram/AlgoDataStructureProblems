@@ -16,24 +16,24 @@ public class StringCompression {
     }
 
     static String compress(String input){
-        StringBuffer stringBuffer=new StringBuffer(input.length());
-        char curr=input.charAt(0);
+        StringBuffer sb=new StringBuffer();
+        char c=input.charAt(0);
         int count=0;
         for(int i=0;i<input.length();i++){
-            if(input.charAt(i)==curr){
+            if(input.charAt(i)==c){
                 count++;
             } else{
-                stringBuffer.append(curr);
-                stringBuffer.append(count);
+                sb.append(c);
+                sb.append(count);
                 count=1;
-                curr=input.charAt(i);
+                c=input.charAt(i);
             }
         }
-        stringBuffer.append(curr);
-        stringBuffer.append(count);
-        if(input.length()<=stringBuffer.toString().length()){
+        sb.append(c);
+        sb.append(count);
+        if(input.length()<=sb.toString().length()){
             return input;
         }
-        return stringBuffer.toString();
+        return sb.toString();
     }
 }

@@ -31,11 +31,9 @@ public class TreeTest {
 
 		System.out.println();
 
-//		tree.iterativePreOrder();
-		tree.iterativePostorder_p();
+		tree.iterativePreorder();
 
 		System.out.println();
-		tree.iterativeInOrder_p();
 
 
 		System.out.println("\nPrint tree");

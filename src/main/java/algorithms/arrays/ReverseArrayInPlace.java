@@ -1,6 +1,7 @@
 package algorithms.arrays;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  * Created by vasanthakumarsubramanian on 1/13/17.
@@ -22,5 +23,8 @@ public class ReverseArrayInPlace {
             a[i] = temp;
         }
         System.out.println(Arrays.toString(a));
+
+        HashSet<Integer> set = new HashSet<>();
+
     }
 }

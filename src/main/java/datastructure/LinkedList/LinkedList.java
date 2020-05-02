@@ -1,6 +1,7 @@
 package datastructure.LinkedList;
 
 import utils.LinkedListUtils;
+import datastructure.LinkedList.Node;
 
 /**
  * Simple linked list
