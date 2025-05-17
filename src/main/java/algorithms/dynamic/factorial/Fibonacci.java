@@ -1,4 +1,4 @@
-package algorithms.dynamic;
+package algorithms.dynamic.factorial;
 
 public class Fibonacci {
 

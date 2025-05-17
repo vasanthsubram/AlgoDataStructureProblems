@@ -1,6 +1,6 @@
 package algorithms.numbers.special.e;
 
-import algorithms.dynamic.Factorial;
+import algorithms.dynamic.factorial.Factorial;
 
 import java.math.BigDecimal;
 

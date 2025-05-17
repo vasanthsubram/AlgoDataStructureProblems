@@ -1,4 +1,4 @@
-package algorithms.dynamic;
+package algorithms.dynamic.factorial;
 
 import java.math.BigDecimal;
 import static java.math.BigDecimal.ONE;

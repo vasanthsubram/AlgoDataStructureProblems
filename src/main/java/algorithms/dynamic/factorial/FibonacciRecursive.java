@@ -1,4 +1,4 @@
-package algorithms.dynamic;
+package algorithms.dynamic.factorial;
 
 /**
  * Recursively calculate the kth FibonacciRecursive number.
@@ -14,7 +14,7 @@ public class FibonacciRecursive {
     }
     
      static long fib(long k) {
-        if (k < 2) return k;
+        if (k <= 1) return k;
         return fib(k - 1) + fib(k - 2);
     }
 }

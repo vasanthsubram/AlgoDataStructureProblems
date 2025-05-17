@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 /**
  * Bubble sort has worst-case and average complexity both О(n2)
- * 
- * @author cuttle-fish
  */
 public class BubbleSort {
 

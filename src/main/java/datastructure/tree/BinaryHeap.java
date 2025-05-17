@@ -2,9 +2,6 @@ package datastructure.tree;
 
 import java.util.Arrays;
 
-/**
- * @author Mark Allen Weiss
- */
 public class BinaryHeap {
 
     private static final int DEFAULT_CAPACITY = 100;
