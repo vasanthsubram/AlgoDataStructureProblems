@@ -1,4 +1,4 @@
-package main.java.algorithms.arrays;
+package algorithms.arrays;
 
 import java.util.HashSet;
 

@@ -1,7 +1,7 @@
 package algorithms.arrays;
 
 /**
- * Created by vasanthakumarsubramanian on 1/13/17.
+ * Iterating the array, verify if element at i is always less than i+1
  */
 public class IsArraySorted {
     public static void main(String[] args) {
